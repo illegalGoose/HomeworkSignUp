@@ -47,9 +47,9 @@ def form():
                 return t.render(invalid_password="Password is invalid!", invalid_username="Username is invalid!", value=user_name)
             if not verify_password:
                 return t.render(passwords_missmatch="Passwords didn't match!", invalid_username="Username is invalid!", value=user_name)
-            return t.render(invalid_username="Username is invalid!")
+            return t.render(invalid_username="Username is invalid!", value=user_name)
         if not password:
-            return t.render(invalid_password="Password is invalid!")
+            return t.render(invalid_password="Password is invalid!", value=user_name)
         if not verify_password:
             return t.render(passwords_missmatch="Passwords didn't match!", value=user_name)
         else:
