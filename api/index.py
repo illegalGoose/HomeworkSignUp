@@ -1,5 +1,4 @@
 from flask import Flask, request, Response, redirect, url_for
-from helpfulFunctions import valid_username, valid_password, valid_email, passwords_match
 import re
 import os
 import jinja2
