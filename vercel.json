@@ -1,7 +1,6 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/api/index" },
-    { "source": "/(.*)", "destination": "/api/helpfulFunctions"}
+    { "source": "/(.*)", "destination": "/api/index" }
   ]
   
 }

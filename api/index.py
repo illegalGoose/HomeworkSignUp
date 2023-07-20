@@ -1,5 +1,6 @@
 from flask import Flask, request, Response, redirect, url_for
 from helpfulFunctions import valid_username, valid_password, valid_email, passwords_match
+import re
 import os
 import jinja2
 app = Flask(__name__)
@@ -7,6 +8,27 @@ app = Flask(__name__)
 template_dir = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), autoescape=True)
 
+USER_NAME = re.compile(r"^[a-zA-Z0-9_-]{3,20}$")
+USER_PASSWORD = re.compile(r"^.{3,20}$")
+USER_EMAIL = re.compile(r"^[\S]+@[\S]+\.[\S]+$")
+
+
+def valid_username(username):
+    return USER_NAME.match(username)
+
+def valid_password(password):
+    return USER_PASSWORD.match(password)
+
+def passwords_match(password, verify_password):
+    if password == verify_password:
+        return password
+    else:
+        return None
+
+def valid_email(email):
+    if email != '':
+        return USER_EMAIL.match(email)
+    return True
 
 @app.route("/signup", methods=['GET', 'POST'])
 def form():
