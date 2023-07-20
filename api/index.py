@@ -52,6 +52,8 @@ def form():
             return t.render(invalid_password="Password is invalid!", value=user_name)
         if not verify_password:
             return t.render(passwords_missmatch="Passwords didn't match!", value=user_name)
+        if not email:
+            return r.render(invalid_email="Email is invalid!" value= user_name)
         else:
             return redirect("/welcome?username=" + user_name)
     return t.render()
