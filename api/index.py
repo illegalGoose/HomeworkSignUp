@@ -29,6 +29,10 @@ def valid_email(email):
         return USER_EMAIL.match(email)
     return True
 
+@app.route("/")
+def redirecting():
+    return redirect("/signup")
+
 @app.route("/signup", methods=['GET', 'POST'])
 def form():
     t = jinja_env.get_template("signUp.html")
