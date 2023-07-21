@@ -66,6 +66,8 @@ def form():
 def welcome_page():
     t = jinja_env.get_template("welcome.html")
     username = request.args.get("username")
+    if not valid_username(username):
+        return redirect("signup")
     return t.render(username=username)
 
 
